@@ -1,0 +1,13 @@
+# Archives
+*.zip
+
+# Documentation (optional - remove if you want to track it)
+documentation/
+
+# Word documents
+*.docx
+
+# System files
+nul
+.DS_Store
+Thumbs.db
