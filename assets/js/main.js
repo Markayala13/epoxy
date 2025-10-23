@@ -560,7 +560,7 @@ JS TABLE OF CONTENTS
         $(window).on('load', function () {
             // Animate loader off screen
             $(".preloader").addClass('loaded');
-            $(".preloader").delay(5000).fadeOut();
+            $(".preloader").delay(3000).fadeOut();
         });
     }
 
