@@ -50,10 +50,6 @@
                 bottom: 0px;
                 right: 0px;
                 z-index: 3;
-
-                @include breakpoint (max-xxl) {
-                    left: 0;
-                }
             }
 
             .thumbShape1 {

@@ -7457,11 +7457,6 @@ input.main-search-input::placeholder {
   right: 0px;
   z-index: 3;
 }
-@media (max-width: 1399px) {
-  .wcu-wrapper.style1 .wcu-thumb .thumb2 {
-    left: 0;
-  }
-}
 .wcu-wrapper.style1 .wcu-thumb .thumbShape1 {
   position: absolute;
   bottom: 0;
@@ -8804,14 +8799,9 @@ input.main-search-input::placeholder {
 }
 .about-wrapper.style1 .about-thumb .thumb2 {
   position: absolute;
-  top: 80px;
-  bottom: 58px;
-  right: 0px;
-}
-@media (max-width: 1399px) {
-  .about-wrapper.style1 .about-thumb .thumb2 {
-    left: 0;
-  }
+  top: 150px;
+  bottom: 20px;
+  right: 50px;
 }
 @media (max-width: 767px) {
   .about-wrapper.style1 .about-thumb .thumb2 {
