@@ -347,17 +347,28 @@
             z-index: 0;
         }
 
-        /* FILTRO NEGRO DESACTIVADO */
-        /* .intro-wrapper::after {
+        /* Video Background */
+        .intro-wrapper .gt-hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Capa negra tenue sobre el video */
+        .intro-wrapper::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 26, 0.7) 100%);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1;
-        } */
+        }
 
         .intro-wrapper .container,
         .intro-wrapper .intro-content-wrapper,
@@ -373,13 +384,13 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 600;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 2px 2px 10px rgba(0, 0, 0, 1);
         }
 
         .intro-wrapper h1,
         .intro-section h1 {
             color: var(--white) !important;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 3px 3px 15px rgba(0, 0, 0, 1);
             font-weight: 800;
         }
 
@@ -387,7 +398,7 @@
         .intro-wrapper .desc,
         .intro-section p {
             color: var(--light-gold) !important;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 2px 2px 8px rgba(0, 0, 0, 1);
         }
 
         /* Buttons Premium Styling */
@@ -462,12 +473,60 @@
             transform: translateY(-5px);
         }
 
+        /* Service Card Description Overlay */
+        .service-card .thumb {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-description-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 10;
+        }
+
+        .service-card .thumb:hover .service-description-overlay {
+            opacity: 1;
+        }
+
+        .service-description-overlay p {
+            color: var(--white) !important;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
         .service-card h3 a {
             color: var(--primary-black) !important;
         }
 
         .service-card h3 a:hover {
             color: var(--gold) !important;
+        }
+
+        /* About Section Images - Adjusted sizes */
+        .about-wrapper.style1 .about-thumb .thumb1 {
+            max-width: 350px;
+            height: auto;
+            margin-top: 80px;
+        }
+
+        .about-wrapper.style1 .about-thumb .thumb2 {
+            max-width: 250px;
+            height: 320px;
+            object-fit: cover;
         }
 
         /* Offer Cards Premium */
@@ -510,6 +569,23 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 767px) {
+            .project-thumb {
+                width: 85%;
+                margin: 0 auto;
+            }
+
+            .project-thumb img {
+                width: 100%;
+            }
         }
 
         .project-thumb:hover {
@@ -851,124 +927,44 @@
     <!-- Intro Section  S T A R T -->
     <div id="home" class="intro-section fix">
         <div class="slider-area introSliderOne">
-            <div class="swiper gt-slider" id="introSliderOne" data-slider-options='{"loop": true, "effect": "fade", "autoplay": {"delay": 4000, "disableOnInteraction": false}, "speed": 1500, "allowTouchMove": false}'>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="intro-wrapper style1 fix  section-padding bg-img">
-                            <div class="shape"><img src="assets/images/shape/heroShape1_1.png" alt="shape"></div>
-                            <div class="gt-hero-bg" data-bg-src="assets/images/hero/dramatic_interior_corner_with_exotic_emerald_green.jpg"></div>
-                            <div class="container">
-                                <div class="intro-content-wrapper style1">
-                                    <div class="row gy-5 d-flex align-items-center">
-                                        <div class="col-xl-6">
-                                            <div class="intro-content">
-                                                <div class="section-title text-start  mt-70">
-                                                    <div class="subtitle text-start"> <img class="me-1"
-                                                            src="assets/images/shape/titleShape1_1.png" alt="icon"> FAMILY-OWNED EXCELLENCE SINCE 1976 </div>
-                                                    <h1 class="text-start mt-15">Transform Your Space with <br> Next-Level Epoxy Solutions</h1>
-                                                    <p class="desc">Premium epoxy flooring systems engineered for durability, safety, and stunning aesthetics. From residential garages to commercial spaces, our certified master installers deliver exceptional results backed by decades of expertise and a satisfaction guarantee.</p>
-                                                </div>
+            <div class="intro-wrapper style1 fix section-padding bg-img">
+                <div class="shape"><img src="assets/images/shape/heroShape1_1.png" alt="shape"></div>
 
+                <!-- Video Background -->
+                <video class="gt-hero-video" autoplay muted loop playsinline>
+                    <source src="assets/images/hero/video.mp4" type="video/mp4">
+                </video>
 
-                                                <div class="btn-wrapper style2">
-                                                    <a href="#contact" class="theme-btn style3">
-                                                        GET YOUR FREE QUOTE
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="26"
-                                                            viewBox="0 0 41 26" fill="none">
-                                                            <rect width="1" height="26" fill="#2B1E16"></rect>
-                                                            <path
-                                                                d="M40.7071 13.7071C41.0976 13.3166 41.0976 12.6834 40.7071 12.2929L34.3431 5.92893C33.9526 5.53841 33.3195 5.53841 32.9289 5.92893C32.5384 6.31946 32.5384 6.95262 32.9289 7.34315L38.5858 13L32.9289 18.6569C32.5384 19.0474 32.5384 19.6805 32.9289 20.0711C33.3195 20.4616 33.9526 20.4616 34.3431 20.0711L40.7071 13.7071ZM15 14H40V12H15V14Z"
-                                                                fill="#2B1E16"></path>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="container">
+                    <div class="intro-content-wrapper style1">
+                        <div class="row gy-5 d-flex align-items-center">
+                            <div class="col-xl-6">
+                                <div class="intro-content">
+                                    <div class="section-title text-start  mt-70">
+                                        <div class="subtitle text-start"> <img class="me-1"
+                                                src="assets/images/shape/titleShape1_1.png" alt="icon"> FAMILY-OWNED EXCELLENCE SINCE 1976 </div>
+                                        <h1 class="text-start mt-15">Transform Your Space with <br> Next-Level Epoxy Solutions</h1>
+                                        <p class="desc">Premium epoxy flooring systems engineered for durability, safety, and stunning aesthetics. From residential garages to commercial spaces, our certified master installers deliver exceptional results backed by expertise and a satisfaction guarantee.</p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="intro-wrapper style1 fix  section-padding bg-img">
-                            <div class="shape"><img src="assets/images/shape/heroShape1_1.png" alt="shape"></div>
-                            <div class="gt-hero-bg" data-bg-src="assets/images/hero/elegant_interior_lounge_area_with_exotic_emerald.jpg"></div>
-                            <div class="container">
-                                <div class="intro-content-wrapper style1">
-                                    <div class="row gy-5 d-flex align-items-center">
-                                        <div class="col-xl-6">
-                                            <div class="intro-content">
-                                                <div class="section-title text-start  mt-70">
-                                                    <div class="subtitle text-start"> <img class="me-1"
-                                                            src="assets/images/shape/titleShape1_1.png" alt="icon"> FAMILY-OWNED EXCELLENCE SINCE 1976 </div>
-                                                    <h1 class="text-start mt-15">Transform Your Space with <br> Next-Level Epoxy Solutions</h1>
-                                                    <p class="desc">Premium epoxy flooring systems engineered for durability, safety, and stunning aesthetics. From residential garages to commercial spaces, our certified master installers deliver exceptional results backed by decades of expertise and a satisfaction guarantee.</p>
-                                                </div>
 
 
-                                                <div class="btn-wrapper style2">
-                                                    <a href="#contact" class="theme-btn style3">
-                                                        GET YOUR FREE QUOTE
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="26"
-                                                            viewBox="0 0 41 26" fill="none">
-                                                            <rect width="1" height="26" fill="#2B1E16"></rect>
-                                                            <path
-                                                                d="M40.7071 13.7071C41.0976 13.3166 41.0976 12.6834 40.7071 12.2929L34.3431 5.92893C33.9526 5.53841 33.3195 5.53841 32.9289 5.92893C32.5384 6.31946 32.5384 6.95262 32.9289 7.34315L38.5858 13L32.9289 18.6569C32.5384 19.0474 32.5384 19.6805 32.9289 20.0711C33.3195 20.4616 33.9526 20.4616 34.3431 20.0711L40.7071 13.7071ZM15 14H40V12H15V14Z"
-                                                                fill="#2B1E16"></path>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="intro-wrapper style1 fix  section-padding bg-img">
-                            <div class="shape"><img src="assets/images/shape/heroShape1_1.png" alt="shape"></div>
-                            <div class="gt-hero-bg" data-bg-src="assets/images/hero/contemporary_master_bedroom_sitting_area_with_dramatic.jpg"></div>
-                            <div class="container">
-                                <div class="intro-content-wrapper style1">
-                                    <div class="row gy-5 d-flex align-items-center">
-                                        <div class="col-xl-6">
-                                            <div class="intro-content">
-                                                <div class="section-title text-start  mt-70">
-                                                    <div class="subtitle text-start"> <img class="me-1"
-                                                            src="assets/images/shape/titleShape1_1.png" alt="icon"> FAMILY-OWNED EXCELLENCE SINCE 1976 </div>
-                                                    <h1 class="text-start mt-15">Transform Your Space with <br> Next-Level Epoxy Solutions</h1>
-                                                    <p class="desc">Premium epoxy flooring systems engineered for durability, safety, and stunning aesthetics. From residential garages to commercial spaces, our certified master installers deliver exceptional results backed by decades of expertise and a satisfaction guarantee.</p>
-                                                </div>
-
-                                                <div class="btn-wrapper style2">
-                                                    <a href="#contact" class="theme-btn style3">
-                                                        GET YOUR FREE QUOTE
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="26"
-                                                            viewBox="0 0 41 26" fill="none">
-                                                            <rect width="1" height="26" fill="#2B1E16"></rect>
-                                                            <path
-                                                                d="M40.7071 13.7071C41.0976 13.3166 41.0976 12.6834 40.7071 12.2929L34.3431 5.92893C33.9526 5.53841 33.3195 5.53841 32.9289 5.92893C32.5384 6.31946 32.5384 6.95262 32.9289 7.34315L38.5858 13L32.9289 18.6569C32.5384 19.0474 32.5384 19.6805 32.9289 20.0711C33.3195 20.4616 33.9526 20.4616 34.3431 20.0711L40.7071 13.7071ZM15 14H40V12H15V14Z"
-                                                                fill="#2B1E16"></path>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="btn-wrapper style2">
+                                        <a href="#contact" class="theme-btn style3">
+                                            GET YOUR FREE QUOTE
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="26"
+                                                viewBox="0 0 41 26" fill="none">
+                                                <rect width="1" height="26" fill="#2B1E16"></rect>
+                                                <path
+                                                    d="M40.7071 13.7071C41.0976 13.3166 41.0976 12.6834 40.7071 12.2929L34.3431 5.92893C33.9526 5.53841 33.3195 5.53841 32.9289 5.92893C32.5384 6.31946 32.5384 6.95262 32.9289 7.34315L38.5858 13L32.9289 18.6569C32.5384 19.0474 32.5384 19.6805 32.9289 20.0711C33.3195 20.4616 33.9526 20.4616 34.3431 20.0711L40.7071 13.7071ZM15 14H40V12H15V14Z"
+                                                    fill="#2B1E16"></path>
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="slider-arrow-btn text-end wow fadeInUp" data-wow-delay=".9s">
-                    <button data-slider-prev="#introSliderOne" class="slider-arrow style1 slider-prev"><i
-                            class="fa-solid fa-arrow-left-long"></i></button>
-                    <button data-slider-next="#introSliderOne" class="slider-arrow style1 slider-next"><i
-                            class="fa-solid fa-arrow-right-long"></i></button>
-                </div>
-                <div class="pagination-class swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -986,9 +982,9 @@
                                 <div class="thumbShape"><img src="assets/images/shape/aboutThumbshape1_1.png"
                                         alt="thumbshape"></div>
                                 <img class="thumb1 img-custom-anim-left wow fadeInUp" data-wow-delay=".3s"
-                                    src="assets/images/about/aboutThumb1_1.jpg" alt="thumb">
+                                    src="assets/images/new gallery/Epoxy Flooring for Sale in Orlando, FL - OfferUp.jpeg" alt="thumb">
                                 <img class="thumb2 img-custom-anim-top wow fadeInUp" data-wow-delay=".7s"
-                                    src="assets/images/about/aboutThumb1_2.jpg" alt="thumb">
+                                    src="assets/images/new gallery/3.png" alt="thumb">
                             </div>
                         </div>
                         <div class="col-xl-6">
@@ -997,14 +993,14 @@
                                     <div class="subtitle text-start wow fadeInUp" data-wow-delay=".5s"> <img
                                             class="me-1" src="assets/images/shape/titleShape1_1.png" alt="icon"> ABOUT
                                         US </div>
-                                    <h2 class=" text-start mt-15 wow fadeInUp" data-wow-delay=".3s">San Antonio's Trusted Epoxy Flooring Experts Since 1976</h2>
+                                    <h2 class=" text-start mt-15 wow fadeInUp" data-wow-delay=".3s">San Antonio's Trusted Epoxy Flooring Experts</h2>
                                     <p class="desc wow fadeInUp" data-wow-delay=".7s">We are a family-owned and operated business proudly serving San Antonio and surrounding regions for nearly five decades. Our certified master installers combine deep knowledge of chemical reactions and surface preparation with cutting-edge technologies to deliver flooring solutions that exceed expectations—guaranteed.</p>
                                 </div>
                                 <div class="row exp-area">
                                     <div class="col-xl-5">
                                         <div class="counter-box style1 wow fadeInUp" data-wow-delay=".5s">
                                             <div class="counter">
-                                                <span class="counter-number"> 48 </span> <span>+</span>
+                                                <span class="counter-number"> 5 </span> <span>+</span>
                                             </div>
                                             <p>Years of Excellence</p>
                                         </div>
@@ -1097,14 +1093,17 @@
                                     </h3>
                                     <div class="thumb">
                                         <img src="assets/images/service/serviceThumb1_1.jpg" alt="thumb">
+                                        <div class="service-description-overlay">
+                                            <p>Clean, seamless, uniformly colored surface. Two-layer system: pigmented base coat + protective top coat. Robust and long-lasting. Ideal for garages, warehouses, and commercial settings.</p>
+                                        </div>
                                     </div>
                                     <div class="link-btn style1">
-                                        <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg xmlns="http://www.w3.org/2000/svg"
                                                 width="26" height="16" viewBox="0 0 26 16" fill="none">
                                                 <path
                                                     d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z"
                                                     fill="#C7844F" />
-                                            </svg></a>
+                                            </svg>
                                     </div>
                                     <div class="shape1"><img src="assets/images/shape/serviceCardShape1_1.png"
                                             alt="shape"></div>
@@ -1122,14 +1121,17 @@
                                     </h3>
                                     <div class="thumb">
                                         <img src="assets/images/service/serviceThumb1_2.jpg" alt="thumb">
+                                        <div class="service-description-overlay">
+                                            <p>Colored vinyl chips broadcast across wet epoxy create decorative appeal and subtle non-slip texture. Exceptional durability, aesthetic versatility. Choose from numerous color blends. Perfect balance of safety, affordability, and professional appearance.</p>
+                                        </div>
                                     </div>
                                     <div class="link-btn style1">
-                                        <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg xmlns="http://www.w3.org/2000/svg"
                                                 width="26" height="16" viewBox="0 0 26 16" fill="none">
                                                 <path
                                                     d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z"
                                                     fill="#C7844F" />
-                                            </svg></a>
+                                            </svg>
                                     </div>
                                     <div class="shape1"><img src="assets/images/shape/serviceCardShape1_1.png"
                                             alt="shape"></div>
@@ -1148,14 +1150,17 @@
                                     </h3>
                                     <div class="thumb">
                                         <img src="assets/images/service/serviceThumb1_3.jpg" alt="thumb">
+                                        <div class="service-description-overlay">
+                                            <p>Advanced epoxy blended with metallic pigments for intricate patterns and custom effects. Single or multiple tones available. Premium systems feature 3D visual effects and textured finishes. High-gloss sealant ensures durability and pristine appearance.</p>
+                                        </div>
                                     </div>
                                     <div class="link-btn style1">
-                                        <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg xmlns="http://www.w3.org/2000/svg"
                                                 width="26" height="16" viewBox="0 0 26 16" fill="none">
                                                 <path
                                                     d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z"
                                                     fill="#C7844F" />
-                                            </svg></a>
+                                            </svg>
                                     </div>
                                     <div class="shape1"><img src="assets/images/shape/serviceCardShape1_1.png"
                                             alt="shape"></div>
@@ -1173,14 +1178,17 @@
                                     </h3>
                                     <div class="thumb">
                                         <img src="assets/images/service/serviceThumb1_4.jpg" alt="thumb">
+                                        <div class="service-description-overlay">
+                                            <p>Impact-resistant epoxy with advanced resins and polymers. Enhanced with quartz for superior durability and reliable traction. Sleek finish with minimal upkeep. Wide range of colors and textures. Ideal for heavy-traffic and moisture-prone areas.</p>
+                                        </div>
                                     </div>
                                     <div class="link-btn style1">
-                                        <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg xmlns="http://www.w3.org/2000/svg"
                                                 width="26" height="16" viewBox="0 0 26 16" fill="none">
                                                 <path
                                                     d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z"
                                                     fill="#C7844F" />
-                                            </svg></a>
+                                            </svg>
                                     </div>
                                     <div class="shape1"><img src="assets/images/shape/serviceCardShape1_1.png"
                                             alt="shape"></div>
@@ -1851,102 +1859,102 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
-                                <img src="assets/images/project/blue-flake-epoxy.jpg" alt="Blue Flake Epoxy Flooring">
+                                <img src="assets/images/new gallery/1.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/metallic-decor-1.jpg" alt="Metallic Epoxy Flooring">
+                                <img src="assets/images/new gallery/2.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".7s">
-                                <img src="assets/images/project/solid-color.jpg" alt="Solid Color Epoxy">
+                                <img src="assets/images/new gallery/3.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/metallic-decor-2.jpg" alt="Metallic Decor Epoxy">
+                                <img src="assets/images/new gallery/ChatGPT Image 27 oct 2025, 10_53_39.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".8s">
-                                <img src="assets/images/project/industrial-epoxy.jpg" alt="Industrial Epoxy Flooring">
+                                <img src="assets/images/new gallery/ChatGPT Image 27 oct 2025, 10_57_06.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".9s">
-                                <img src="assets/images/project/metallic-decor-3.jpg" alt="Metallic Epoxy Design">
+                                <img src="assets/images/new gallery/ChatGPT Image 27 oct 2025, 10_57_09.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
-                                <img src="assets/images/project/bright_airy_bedroom_reading_nook_with_light.jpg" alt="Epoxy Flooring in Bedroom">
+                                <img src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 09_56_53 AM.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/contemporary_master_bedroom_sitting_area_with_dramatic.jpg" alt="Contemporary Epoxy Flooring">
+                                <img src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 10_01_05 AM.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".7s">
-                                <img src="assets/images/project/cozy_modern_bedroom_corner_with_textured_epoxy.jpg" alt="Textured Epoxy Flooring">
+                                <img src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 10_06_31 AM.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/dramatic_interior_corner_with_exotic_emerald_green.jpg" alt="Emerald Green Metallic Epoxy">
+                                <img src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 10_09_38 AM.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".8s">
-                                <img src="assets/images/project/dramatic_interior_corner_with_exotic_metallic_epoxy.jpg" alt="Exotic Metallic Epoxy">
+                                <img src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 10_17_29 AM.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".9s">
-                                <img src="assets/images/project/elegant_interior_lounge_area_with_exotic_emerald.jpg" alt="Elegant Emerald Epoxy">
+                                <img src="assets/images/new gallery/Photo Aug 06 2025, 11 57 51 AM.jpg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
-                                <img src="assets/images/project/exotic_bedroom_space_with_stunning_galaxy_metallic.jpg" alt="Galaxy Metallic Epoxy">
+                                <img src="assets/images/new gallery/Photo Aug 28 2025, 3 28 08 PM.jpg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/interior_de_una_casa_moderna_americana_con.jpg" alt="Modern Home Epoxy Flooring">
+                                <img src="assets/images/new gallery/Photo Feb 18 2025, 3 24 55 PM.jpg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".7s">
-                                <img src="assets/images/project/interior_de_una_habitaci_n_moderna_de_lujo.jpg" alt="Luxury Epoxy Flooring">
+                                <img src="assets/images/new gallery/Marble Effect Blue Epoxy.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/interior_de_una_habitaci_n_principal_elegante_con.jpg" alt="Elegant Master Bedroom Epoxy">
+                                <img src="assets/images/new gallery/Metallic Epoxy Flooring.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".8s">
-                                <img src="assets/images/project/luxurious_interior_sitting_area_with_exotic_ocean.jpg" alt="Ocean Blue Metallic Epoxy">
+                                <img src="assets/images/new gallery/Polyaspartic Floor.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".9s">
-                                <img src="assets/images/project/trabajos_de_flooring_de_epoxy_en_interiores.jpg" alt="Interior Epoxy Flooring Work">
+                                <img src="assets/images/new gallery/Gray metallic epoxy floor by Painteexo atelie.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
-                                <img src="assets/images/project/trabajos_de_floring_de_epoxy (1).jpg" alt="Professional Epoxy Installation">
+                                <img src="assets/images/new gallery/Epoxy Floor Ideas 💡.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/images/project/trabajos_de_floring_de_epoxy.jpg" alt="Epoxy Flooring Projects">
+                                <img src="assets/images/new gallery/186afafc-6314-49c2-9136-f47301eb59b8.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                     </div>
@@ -1981,8 +1989,8 @@
                                     <div class="subtitle text-start wow fadeInUp" data-wow-delay=".5s"> <img
                                             class="me-1" src="assets/images/shape/titleShape1_1.png" alt="icon">
                                         RELIABLE </div>
-                                    <h2 class=" text-start mt-15 wow fadeInUp" data-wow-delay=".8s">Nearly 50 Years of Trusted Epoxy Excellence</h2>
-                                    <p class="desc wow fadeInUp" data-wow-delay=".7s">Since 1976, families and businesses across San Antonio have trusted us for premium epoxy flooring installations. Our certified master installers combine decades of expertise with cutting-edge technology, ensuring every project meets the highest standards of quality and durability—guaranteed.</p>
+                                    <h2 class=" text-start mt-15 wow fadeInUp" data-wow-delay=".8s">Trusted Epoxy Excellence</h2>
+                                    <p class="desc wow fadeInUp" data-wow-delay=".7s">Families and businesses across San Antonio have trusted us for premium epoxy flooring installations. Our certified master installers combine expertise with cutting-edge technology, ensuring every project meets the highest standards of quality and durability—guaranteed.</p>
                                 </div>
                                 <div class="fancy-box style2 wow fadeInUp" data-wow-delay=".5s">
                                     <div class="fancy-item">
@@ -2316,10 +2324,9 @@
                                 <li>
                                     <div class="title">
                                         <a
-                                            href="https://www.google.com/maps/place/Egens+Lab/@23.8340712,90.3631117,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c14c8682a473:0xa6c74743d52adb88!8m2!3d23.8340663!4d90.3656866!16s%2Fg%2F11rs9vlwsk?entry=ttu">
+                                            href="https://www.google.com/maps/place/San+Antonio,+TX">
                                             <span class="text-theme-color me-1"> <i
-                                                    class="fa-regular fa-location-dot"></i> </span> 6391 Elgin St.
-                                            Celina, USA</a>
+                                                    class="fa-regular fa-location-dot"></i> </span> San Antonio, TX</a>
                                     </div>
                                 </li>
                                 <li>
