@@ -2379,6 +2379,46 @@
     <script src="assets/js/nice-select.min.js"></script>
     <!--<< Main.js >>-->
     <script src="assets/js/main.js"></script>
+
+    <!-- Close mobile menu on link click -->
+    <script>
+        // Wait for menu to be initialized
+        setTimeout(function() {
+            // Get all menu links in mobile menu and offcanvas
+            const menuLinks = document.querySelectorAll('.mobile-menu a, #mobile-menu a, .offcanvas__info .mobile-menu a, .mean-nav a');
+            const offcanvasClose = document.querySelector('.offcanvas__close button');
+            const offcanvasOverlay = document.querySelector('.offcanvas__overlay');
+            const fixArea = document.querySelector('.fix-area');
+
+            console.log('Found menu links:', menuLinks.length);
+
+            // Add click event to all menu links
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Menu link clicked');
+
+                    // Close the offcanvas menu by clicking close button
+                    if (offcanvasClose) {
+                        offcanvasClose.click();
+                    }
+
+                    // Remove active class from fix-area
+                    if (fixArea) {
+                        fixArea.classList.remove('active');
+                    }
+
+                    // Click overlay to ensure menu closes
+                    if (offcanvasOverlay) {
+                        offcanvasOverlay.click();
+                    }
+
+                    // Remove active classes
+                    document.querySelector('.offcanvas__info')?.classList.remove('active');
+                    document.querySelector('.offcanvas__overlay')?.classList.remove('active');
+                });
+            });
+        }, 1000);
+    </script>
 </body>
 
 </html>
