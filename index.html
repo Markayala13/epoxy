@@ -799,7 +799,237 @@
                 transform: scale(0.95);
             }
         }
+
+        /* Responsive Form Grid */
+        .responsive-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-submit-btn {
+            grid-column: 1 / -1;
+            width: 100% !important;
+            cursor: pointer !important;
+            transition: all 0.1s ease !important;
+            position: relative;
+            margin-left: 0 !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .form-submit-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+        }
+
+        .form-submit-btn:active {
+            transform: translateY(5px) scale(0.95) !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset !important;
+            filter: brightness(0.7) !important;
+            background-color: #8b5a2b !important;
+        }
+
+        /* Mobile y Tablet - Efecto MUY visible */
+        @media (max-width: 991px) {
+            .form-submit-btn {
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4) !important;
+                padding: 18px !important;
+            }
+
+            .form-submit-btn:active {
+                transform: translateY(6px) scale(0.92) !important;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) inset !important;
+                filter: brightness(0.6) !important;
+                background-color: #6d451f !important;
+            }
+        }
+
+        /* Quartz System - Video en responsive, imagen en desktop */
+        .quartz-thumb-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quartz-desktop-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .quartz-mobile-video {
+            display: none;
+        }
+
+        /* Responsive - Mostrar video, ocultar imagen */
+        @media (max-width: 991px) {
+            .quartz-desktop-img {
+                display: none;
+            }
+
+            .quartz-mobile-video {
+                display: block;
+                width: 370px;
+                height: 272px;
+                max-width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        /* Solid Color Epoxy - Video en responsive, imagen en desktop */
+        .solid-color-thumb-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solid-color-desktop-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .solid-color-mobile-video {
+            display: none;
+        }
+
+        /* Responsive - Mostrar video, ocultar imagen */
+        @media (max-width: 991px) {
+            .solid-color-desktop-img {
+                display: none;
+            }
+
+            .solid-color-mobile-video {
+                display: block;
+                width: 370px;
+                height: 272px;
+                max-width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        /* Epoxy Flake System - Video en responsive, imagen en desktop */
+        .epoxy-flake-thumb-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .epoxy-flake-desktop-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .epoxy-flake-mobile-video {
+            display: none;
+        }
+
+        /* Responsive - Mostrar video, ocultar imagen */
+        @media (max-width: 991px) {
+            .epoxy-flake-desktop-img {
+                display: none;
+            }
+
+            .epoxy-flake-mobile-video {
+                display: block;
+                width: 370px;
+                height: 272px;
+                max-width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        /* Metallic Epoxy - Video en responsive, imagen en desktop */
+        .metallic-epoxy-thumb-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metallic-epoxy-desktop-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .metallic-epoxy-mobile-video {
+            display: none;
+        }
+
+        /* Responsive - Mostrar video, ocultar imagen */
+        @media (max-width: 991px) {
+            .metallic-epoxy-desktop-img {
+                display: none;
+            }
+
+            .metallic-epoxy-mobile-video {
+                display: block;
+                width: 370px;
+                height: 272px;
+                max-width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        /* Centralizar flechas del carrusel en responsive */
+        @media (max-width: 991px) {
+            .slider-arrow-btn {
+                justify-content: center !important;
+                text-align: center !important;
+                width: 100%;
+                margin: 20px auto 0 !important;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 991px) {
+            .responsive-form-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            .responsive-form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .subscription-box input,
+            .subscription-box button {
+                text-align: center;
+                padding: 15px;
+            }
+        }
     </style>
+
+    <script>
+        // Reducir velocidad del video de Metallic Epoxy
+        document.addEventListener('DOMContentLoaded', function() {
+            const metallicVideo = document.getElementById('metallicEpoxyVideo');
+            if (metallicVideo) {
+                metallicVideo.playbackRate = 0.7;
+            }
+
+            // Cerrar menú mobile automáticamente al hacer clic en un enlace
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu a, #mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Cerrar el menú mobile (MeanMenu)
+                    const meanMenuClose = document.querySelector('.meanclose');
+                    if (meanMenuClose && window.innerWidth <= 1199) {
+                        meanMenuClose.click();
+                    }
+                });
+            });
+        });
+    </script>
 
     <!-- Mouse Cursor Start -->
     <div class="mouse-cursor cursor-outer"></div>
@@ -994,15 +1224,12 @@
                                             class="me-1" src="assets/images/shape/titleShape1_1.png" alt="icon"> ABOUT
                                         US </div>
                                     <h2 class=" text-start mt-15 wow fadeInUp" data-wow-delay=".3s">San Antonio's Trusted Epoxy Flooring Experts</h2>
-                                    <p class="desc wow fadeInUp" data-wow-delay=".7s">We are a family-owned and operated business proudly serving San Antonio and surrounding regions for nearly five decades. Our certified master installers combine deep knowledge of chemical reactions and surface preparation with cutting-edge technologies to deliver flooring solutions that exceed expectations—guaranteed.</p>
+                                    <p class="desc wow fadeInUp" data-wow-delay=".7s">We are a family-owned and operated business proudly serving San Antonio and surrounding regions for about a year. Our certified master installers combine deep knowledge of chemical reactions and surface preparation with cutting-edge technologies to deliver flooring solutions that exceed expectations—guaranteed.</p>
                                 </div>
                                 <div class="row exp-area">
                                     <div class="col-xl-5">
                                         <div class="counter-box style1 wow fadeInUp" data-wow-delay=".5s">
-                                            <div class="counter">
-                                                <span class="counter-number"> 5 </span> <span>+</span>
-                                            </div>
-                                            <p>Years of Excellence</p>
+                                            <p>Excellence</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-7">
@@ -1081,7 +1308,7 @@
             <div class="container">
                 <div class="slider-area serviceSliderOne">
                     <div class="swiper gt-slider" id="serviceSliderOne"
-                        data-slider-options='{"loop": true,"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":1,"centeredSlides":true},"768":{"slidesPerView":1},"1025":{"slidesPerView":3},"1500":{"slidesPerView":4}}}'>
+                        data-slider-options='{"loop": true,"autoplay":{"delay":10000,"disableOnInteraction":false},"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":1,"centeredSlides":true},"768":{"slidesPerView":1},"1025":{"slidesPerView":3},"1500":{"slidesPerView":4}}}'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="service-card style1 img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
@@ -1091,8 +1318,9 @@
                                     <h3>
                                         <a href="#contact"> Solid Color Epoxy </a>
                                     </h3>
-                                    <div class="thumb">
-                                        <img src="assets/images/service/serviceThumb1_1.jpg" alt="thumb">
+                                    <div class="thumb solid-color-thumb-media">
+                                        <img src="assets/images/service/serviceThumb1_1.jpg" alt="thumb" class="solid-color-desktop-img">
+                                        <video src="assets/images/service/solid color epoxy.mp4" class="solid-color-mobile-video" autoplay muted loop playsinline></video>
                                         <div class="service-description-overlay">
                                             <p>Clean, seamless, uniformly colored surface. Two-layer system: pigmented base coat + protective top coat. Robust and long-lasting. Ideal for garages, warehouses, and commercial settings.</p>
                                         </div>
@@ -1119,8 +1347,9 @@
                                     <h3>
                                         <a href="#contact"> Epoxy Flake System </a>
                                     </h3>
-                                    <div class="thumb">
-                                        <img src="assets/images/service/serviceThumb1_2.jpg" alt="thumb">
+                                    <div class="thumb epoxy-flake-thumb-media">
+                                        <img src="assets/images/service/serviceThumb1_2.jpg" alt="thumb" class="epoxy-flake-desktop-img">
+                                        <video src="assets/images/service/piso_epoxy_flake_system_no_muy_sofisticado.mp4" class="epoxy-flake-mobile-video" autoplay muted loop playsinline></video>
                                         <div class="service-description-overlay">
                                             <p>Colored vinyl chips broadcast across wet epoxy create decorative appeal and subtle non-slip texture. Exceptional durability, aesthetic versatility. Choose from numerous color blends. Perfect balance of safety, affordability, and professional appearance.</p>
                                         </div>
@@ -1148,8 +1377,9 @@
                                     <h3>
                                         <a href="#contact"> Metallic Epoxy </a>
                                     </h3>
-                                    <div class="thumb">
-                                        <img src="assets/images/service/serviceThumb1_3.jpg" alt="thumb">
+                                    <div class="thumb metallic-epoxy-thumb-media">
+                                        <img src="assets/images/service/serviceThumb1_3.jpg" alt="thumb" class="metallic-epoxy-desktop-img">
+                                        <video src="assets/images/service/piso_metalic_epoxy.mp4" class="metallic-epoxy-mobile-video" autoplay muted loop playsinline id="metallicEpoxyVideo"></video>
                                         <div class="service-description-overlay">
                                             <p>Advanced epoxy blended with metallic pigments for intricate patterns and custom effects. Single or multiple tones available. Premium systems feature 3D visual effects and textured finishes. High-gloss sealant ensures durability and pristine appearance.</p>
                                         </div>
@@ -1176,8 +1406,9 @@
                                     <h3>
                                         <a href="#contact"> Quartz System </a>
                                     </h3>
-                                    <div class="thumb">
-                                        <img src="assets/images/service/serviceThumb1_4.jpg" alt="thumb">
+                                    <div class="thumb quartz-thumb-media">
+                                        <img src="assets/images/service/serviceThumb1_4.jpg" alt="thumb" class="quartz-desktop-img">
+                                        <video src="assets/images/service/piso_quartz_system (1).mp4" class="quartz-mobile-video" autoplay muted loop playsinline></video>
                                         <div class="service-description-overlay">
                                             <p>Impact-resistant epoxy with advanced resins and polymers. Enhanced with quartz for superior durability and reliable traction. Sleek finish with minimal upkeep. Wide range of colors and textures. Ideal for heavy-traffic and moisture-prone areas.</p>
                                         </div>
@@ -1859,7 +2090,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".3s">
-                                <img src="assets/images/new gallery/1.png" alt="Epoxy Flooring Project">
+                                <img src="assets/images/new gallery/yellow.png" alt="Epoxy Flooring Project">
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -2097,7 +2328,7 @@
                                             alt="shape"></div>
                                     <div class="profile-meta">
                                         <div class="thumb">
-                                            <img src="assets/images/testimonial/testimonialProfile1_2.png" alt="thumb">
+                                            <img src="assets/images/testimonial/sarav2.jpeg" alt="thumb" width="60" height="60" style="object-fit: cover; object-position: center;">
                                         </div>
                                         <div class="content">
                                             <h6>Sarah</h6>
@@ -2175,7 +2406,7 @@
                 <div class="skills-wrapper style1 bg-theme2" data-bg-src="assets/images/bg/skillsBg1_1.jpg">
                     <div class="shape d-none d-xxl-block">
                         <img class="img-custom-anim-left wow fadeInLeft" data-wow-delay=".5s"
-                            src="assets/images/shape/skillsShape1_1.png" alt="shape">
+                            src="assets/images/new gallery/ChatGPT Image Oct 27, 2025, 10_09_38 AM.png" alt="shape" width="291" height="201">
                     </div>
                     <div class="row gy-5 gy-md-0 gx-60">
                         <div class="col-xl-5">
@@ -2239,12 +2470,12 @@
                             </div>
                         </div>
                         <div class="col-xl-8">
-                            <div class="subscription-box" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                                <input type="text" placeholder="Name" style="width: 100%;">
-                                <input type="email" placeholder="Email Address" style="width: 100%;">
-                                <input type="tel" placeholder="Phone" style="width: 100%;">
-                                <button type="submit" style="grid-column: 1 / -1; width: 100%;">Send</button>
-                            </div>
+                            <form class="subscription-box responsive-form-grid" onsubmit="alert('Form submitted! Name: ' + this[0].value + ', Email: ' + this[1].value + ', Phone: ' + this[2].value); return false;">
+                                <input type="text" name="name" placeholder="Name" style="width: 100%;" required>
+                                <input type="email" name="email" placeholder="Email Address" style="width: 100%;" required>
+                                <input type="tel" name="phone" placeholder="Phone" style="width: 100%;" required>
+                                <button type="submit" class="form-submit-btn" style="cursor: pointer;">Send</button>
+                            </form>
 
                         </div>
                     </div>

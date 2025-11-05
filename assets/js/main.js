@@ -553,14 +553,14 @@ JS TABLE OF CONTENTS
 
 
     /*-----------------------------------
-        18. Preloader   
+        18. Preloader
     -----------------------------------*/
 
     function loader() {
         $(window).on('load', function () {
             // Animate loader off screen
             $(".preloader").addClass('loaded');
-            $(".preloader").delay(3000).fadeOut();
+            $(".preloader").delay(2000).fadeOut();
         });
     }
 
