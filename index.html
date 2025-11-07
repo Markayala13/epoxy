@@ -1000,6 +1000,23 @@
                 });
             });
 
+            // Verificar y corregir velocidad cada 500ms (para los videos clonados del carrusel)
+            setInterval(function() {
+                // Buscar TODOS los videos en el DOM (incluyendo clones del carrusel)
+                const allServiceVideos = document.querySelectorAll('.solid-color-video, .metallic-epoxy-video, .epoxy-flake-video, .quartz-video');
+                allServiceVideos.forEach(video => {
+                    if (video.classList.contains('epoxy-flake-video')) {
+                        if (video.playbackRate !== 0.5) {
+                            video.playbackRate = 0.5;
+                        }
+                    } else {
+                        if (video.playbackRate !== 0.6) {
+                            video.playbackRate = 0.6;
+                        }
+                    }
+                });
+            }, 500);
+
             // Cerrar menú mobile automáticamente al hacer clic en un enlace
             const mobileMenuLinks = document.querySelectorAll('.mobile-menu a, #mobile-menu a');
             mobileMenuLinks.forEach(link => {
