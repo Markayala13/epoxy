@@ -594,6 +594,13 @@
             transform: scale(1.02);
         }
 
+        /* Process Section Cards */
+        .process-card:hover {
+            border-color: var(--bronze) !important;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+
         /* Footer Premium */
         .footer-section {
             background: linear-gradient(135deg, var(--deep-black) 0%, var(--primary-black) 100%) !important;
@@ -846,132 +853,64 @@
             }
         }
 
-        /* Quartz System - Video en responsive, imagen en desktop */
+        /* Quartz System - Video en desktop y responsive */
         .quartz-thumb-media {
             position: relative;
             overflow: hidden;
         }
 
-        .quartz-desktop-img {
+        .quartz-video {
             display: block;
-            width: 100%;
-            height: auto;
+            width: 370px;
+            height: 272px;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
-        .quartz-mobile-video {
-            display: none;
-        }
-
-        /* Responsive - Mostrar video, ocultar imagen */
-        @media (max-width: 991px) {
-            .quartz-desktop-img {
-                display: none;
-            }
-
-            .quartz-mobile-video {
-                display: block;
-                width: 370px;
-                height: 272px;
-                max-width: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-
-        /* Solid Color Epoxy - Video en responsive, imagen en desktop */
+        /* Solid Color Epoxy - Video en desktop y responsive */
         .solid-color-thumb-media {
             position: relative;
             overflow: hidden;
         }
 
-        .solid-color-desktop-img {
+        .solid-color-video {
             display: block;
-            width: 100%;
-            height: auto;
+            width: 370px;
+            height: 272px;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
-        .solid-color-mobile-video {
-            display: none;
-        }
-
-        /* Responsive - Mostrar video, ocultar imagen */
-        @media (max-width: 991px) {
-            .solid-color-desktop-img {
-                display: none;
-            }
-
-            .solid-color-mobile-video {
-                display: block;
-                width: 370px;
-                height: 272px;
-                max-width: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-
-        /* Epoxy Flake System - Video en responsive, imagen en desktop */
+        /* Epoxy Flake System - Video en desktop y responsive */
         .epoxy-flake-thumb-media {
             position: relative;
             overflow: hidden;
         }
 
-        .epoxy-flake-desktop-img {
+        .epoxy-flake-video {
             display: block;
-            width: 100%;
-            height: auto;
+            width: 370px;
+            height: 272px;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
-        .epoxy-flake-mobile-video {
-            display: none;
-        }
-
-        /* Responsive - Mostrar video, ocultar imagen */
-        @media (max-width: 991px) {
-            .epoxy-flake-desktop-img {
-                display: none;
-            }
-
-            .epoxy-flake-mobile-video {
-                display: block;
-                width: 370px;
-                height: 272px;
-                max-width: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-
-        /* Metallic Epoxy - Video en responsive, imagen en desktop */
+        /* Metallic Epoxy - Video en desktop y responsive */
         .metallic-epoxy-thumb-media {
             position: relative;
             overflow: hidden;
         }
 
-        .metallic-epoxy-desktop-img {
+        .metallic-epoxy-video {
             display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .metallic-epoxy-mobile-video {
-            display: none;
-        }
-
-        /* Responsive - Mostrar video, ocultar imagen */
-        @media (max-width: 991px) {
-            .metallic-epoxy-desktop-img {
-                display: none;
-            }
-
-            .metallic-epoxy-mobile-video {
-                display: block;
-                width: 370px;
-                height: 272px;
-                max-width: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
+            width: 370px;
+            height: 272px;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* Centralizar flechas del carrusel en responsive */
@@ -1010,11 +949,30 @@
     </style>
 
     <script>
-        // Reducir velocidad del video de Metallic Epoxy
+        // Reducir velocidad de los videos a 0.6x
         document.addEventListener('DOMContentLoaded', function() {
+            // Reducir velocidad del video de Metallic Epoxy
             const metallicVideo = document.getElementById('metallicEpoxyVideo');
             if (metallicVideo) {
-                metallicVideo.playbackRate = 0.7;
+                metallicVideo.playbackRate = 0.6;
+            }
+
+            // Reducir velocidad del video de Solid Color Epoxy
+            const solidColorVideo = document.querySelector('.solid-color-video');
+            if (solidColorVideo) {
+                solidColorVideo.playbackRate = 0.6;
+            }
+
+            // Reducir velocidad del video de Epoxy Flake System
+            const epoxyFlakeVideo = document.getElementById('epoxyFlakeVideo');
+            if (epoxyFlakeVideo) {
+                epoxyFlakeVideo.playbackRate = 0.5;
+            }
+
+            // Reducir velocidad del video de Quartz System
+            const quartzVideo = document.getElementById('quartzVideo');
+            if (quartzVideo) {
+                quartzVideo.playbackRate = 0.6;
             }
 
             // Cerrar menú mobile automáticamente al hacer clic en un enlace
@@ -1319,8 +1277,7 @@
                                         <a href="#contact"> Solid Color Epoxy </a>
                                     </h3>
                                     <div class="thumb solid-color-thumb-media">
-                                        <img src="assets/images/service/serviceThumb1_1.jpg" alt="thumb" class="solid-color-desktop-img">
-                                        <video src="assets/images/service/solid color epoxy.mp4" class="solid-color-mobile-video" autoplay muted loop playsinline></video>
+                                        <video src="assets/images/service/new/solid.mp4" class="solid-color-video" autoplay muted loop playsinline></video>
                                         <div class="service-description-overlay">
                                             <p>Clean, seamless, uniformly colored surface. Two-layer system: pigmented base coat + protective top coat. Robust and long-lasting. Ideal for garages, warehouses, and commercial settings.</p>
                                         </div>
@@ -1348,8 +1305,7 @@
                                         <a href="#contact"> Epoxy Flake System </a>
                                     </h3>
                                     <div class="thumb epoxy-flake-thumb-media">
-                                        <img src="assets/images/service/serviceThumb1_2.jpg" alt="thumb" class="epoxy-flake-desktop-img">
-                                        <video src="assets/images/service/piso_epoxy_flake_system_no_muy_sofisticado.mp4" class="epoxy-flake-mobile-video" autoplay muted loop playsinline></video>
+                                        <video src="assets/images/service/new/flake.mp4" class="epoxy-flake-video" autoplay muted loop playsinline id="epoxyFlakeVideo"></video>
                                         <div class="service-description-overlay">
                                             <p>Colored vinyl chips broadcast across wet epoxy create decorative appeal and subtle non-slip texture. Exceptional durability, aesthetic versatility. Choose from numerous color blends. Perfect balance of safety, affordability, and professional appearance.</p>
                                         </div>
@@ -1378,8 +1334,7 @@
                                         <a href="#contact"> Metallic Epoxy </a>
                                     </h3>
                                     <div class="thumb metallic-epoxy-thumb-media">
-                                        <img src="assets/images/service/serviceThumb1_3.jpg" alt="thumb" class="metallic-epoxy-desktop-img">
-                                        <video src="assets/images/service/piso_metalic_epoxy.mp4" class="metallic-epoxy-mobile-video" autoplay muted loop playsinline id="metallicEpoxyVideo"></video>
+                                        <video src="assets/images/service/new/metalicVideo.mp4" class="metallic-epoxy-video" autoplay muted loop playsinline id="metallicEpoxyVideo"></video>
                                         <div class="service-description-overlay">
                                             <p>Advanced epoxy blended with metallic pigments for intricate patterns and custom effects. Single or multiple tones available. Premium systems feature 3D visual effects and textured finishes. High-gloss sealant ensures durability and pristine appearance.</p>
                                         </div>
@@ -1407,8 +1362,7 @@
                                         <a href="#contact"> Quartz System </a>
                                     </h3>
                                     <div class="thumb quartz-thumb-media">
-                                        <img src="assets/images/service/serviceThumb1_4.jpg" alt="thumb" class="quartz-desktop-img">
-                                        <video src="assets/images/service/piso_quartz_system (1).mp4" class="quartz-mobile-video" autoplay muted loop playsinline></video>
+                                        <video src="assets/images/service/new/quartzVideo.mp4" class="quartz-video" autoplay muted loop playsinline id="quartzVideo"></video>
                                         <div class="service-description-overlay">
                                             <p>Impact-resistant epoxy with advanced resins and polymers. Enhanced with quartz for superior durability and reliable traction. Sleek finish with minimal upkeep. Wide range of colors and textures. Ideal for heavy-traffic and moisture-prone areas.</p>
                                         </div>
@@ -2188,6 +2142,64 @@
                                 <img src="assets/images/new gallery/186afafc-6314-49c2-9136-f47301eb59b8.jpeg" alt="Epoxy Flooring Project">
                             </div>
                         </div>
+                        <div class="swiper-slide">
+                            <div class="project-thumb img-custom-anim-top wow fadeInUp" data-wow-delay=".7s">
+                                <img src="assets/images/new gallery/quartz.png" alt="Quartz Epoxy Flooring">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-thumb img-custom-anim-left wow fadeInUp" data-wow-delay=".5s">
+                                <img src="assets/images/new gallery/solid floor.png" alt="Solid Floor Epoxy">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="project-thumb img-custom-anim-right wow fadeInUp" data-wow-delay=".9s">
+                                <img src="assets/images/new gallery/metalic.png" alt="Metallic Epoxy Flooring">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Epoxy System Process Section    S T A R T -->
+    <section class="process-section section-padding fix" style="background: #ffffff;">
+        <div class="container">
+            <div class="section-title text-center mb-50">
+                <div class="subtitle text-center wow fadeInUp" data-wow-delay=".3s">
+                    <img class="me-1" src="assets/images/shape/titleShape1_1.png" alt="icon"> OUR PROCESS
+                </div>
+                <h2 class="text-center mt-15 wow fadeInUp" data-wow-delay=".5s" style="color: var(--primary-black);">Epoxy System Process</h2>
+            </div>
+            <div class="text-center mb-50 wow fadeInUp" data-wow-delay=".7s">
+                <div class="col-xl-3 mx-auto">
+                    <img src="assets/images/new gallery/PROCESS.png" alt="Epoxy System Process" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-card wow fadeInUp" data-wow-delay=".3s" style="background: linear-gradient(135deg, var(--primary-black) 0%, var(--soft-black) 100%); border: 2px solid var(--gold); border-radius: 8px; padding: 30px; transition: all 0.3s ease; height: 100%;">
+                        <h3 style="color: var(--gold); font-family: 'Plus Jakarta Sans', system-ui; font-size: 22px; font-weight: 600; margin-bottom: 15px;">Step 1: Concrete Preparation</h3>
+                        <p style="color: var(--light-gold); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.6; margin: 0;">The surface is ground or sanded with diamond tools to open the pores. All dust and grease are removed, and cracks are repaired with epoxy mortar to ensure strong adhesion.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-card wow fadeInUp" data-wow-delay=".5s" style="background: linear-gradient(135deg, var(--primary-black) 0%, var(--soft-black) 100%); border: 2px solid var(--gold); border-radius: 8px; padding: 30px; transition: all 0.3s ease; height: 100%;">
+                        <h3 style="color: var(--gold); font-family: 'Plus Jakarta Sans', system-ui; font-size: 22px; font-weight: 600; margin-bottom: 15px;">Step 2: Primer / Sealer Application</h3>
+                        <p style="color: var(--light-gold); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.6; margin: 0;">A thin coat of epoxy primer is applied with a roller or trowel to seal the concrete and improve bonding between layers. It must dry for about 6–8 hours before the next step.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-card wow fadeInUp" data-wow-delay=".7s" style="background: linear-gradient(135deg, var(--primary-black) 0%, var(--soft-black) 100%); border: 2px solid var(--gold); border-radius: 8px; padding: 30px; transition: all 0.3s ease; height: 100%;">
+                        <h3 style="color: var(--gold); font-family: 'Plus Jakarta Sans', system-ui; font-size: 22px; font-weight: 600; margin-bottom: 15px;">Step 3: Pigmented Base + Quartz</h3>
+                        <p style="color: var(--light-gold); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.6; margin: 0;">A uniform pigmented base layer is applied, then quartz sand is broadcast over it while wet. Once cured, excess quartz is removed. A second quartz coat can be added for extra texture or durability.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-card wow fadeInUp" data-wow-delay=".9s" style="background: linear-gradient(135deg, var(--primary-black) 0%, var(--soft-black) 100%); border: 2px solid var(--gold); border-radius: 8px; padding: 30px; transition: all 0.3s ease; height: 100%;">
+                        <h3 style="color: var(--gold); font-family: 'Plus Jakarta Sans', system-ui; font-size: 22px; font-weight: 600; margin-bottom: 15px;">Step 4: Final Clear Coat</h3>
+                        <p style="color: var(--light-gold); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.6; margin: 0;">A final transparent self-leveling epoxy coat is applied to encapsulate the quartz, provide gloss, and add chemical resistance. Let it cure 24–48 hours before allowing foot or vehicle traffic.</p>
                     </div>
                 </div>
             </div>
