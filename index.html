@@ -951,29 +951,54 @@
     <script>
         // Reducir velocidad de los videos a 0.6x
         document.addEventListener('DOMContentLoaded', function() {
-            // Reducir velocidad del video de Metallic Epoxy
-            const metallicVideo = document.getElementById('metallicEpoxyVideo');
-            if (metallicVideo) {
-                metallicVideo.playbackRate = 0.6;
+            // Función para aplicar velocidad a los videos
+            function setVideoSpeeds() {
+                // Reducir velocidad del video de Metallic Epoxy
+                const metallicVideo = document.getElementById('metallicEpoxyVideo');
+                if (metallicVideo) {
+                    metallicVideo.playbackRate = 0.6;
+                }
+
+                // Reducir velocidad del video de Solid Color Epoxy
+                const solidColorVideo = document.querySelector('.solid-color-video');
+                if (solidColorVideo) {
+                    solidColorVideo.playbackRate = 0.6;
+                }
+
+                // Reducir velocidad del video de Epoxy Flake System
+                const epoxyFlakeVideo = document.getElementById('epoxyFlakeVideo');
+                if (epoxyFlakeVideo) {
+                    epoxyFlakeVideo.playbackRate = 0.5;
+                }
+
+                // Reducir velocidad del video de Quartz System
+                const quartzVideo = document.getElementById('quartzVideo');
+                if (quartzVideo) {
+                    quartzVideo.playbackRate = 0.6;
+                }
             }
 
-            // Reducir velocidad del video de Solid Color Epoxy
-            const solidColorVideo = document.querySelector('.solid-color-video');
-            if (solidColorVideo) {
-                solidColorVideo.playbackRate = 0.6;
-            }
+            // Aplicar velocidades al cargar
+            setVideoSpeeds();
 
-            // Reducir velocidad del video de Epoxy Flake System
-            const epoxyFlakeVideo = document.getElementById('epoxyFlakeVideo');
-            if (epoxyFlakeVideo) {
-                epoxyFlakeVideo.playbackRate = 0.5;
-            }
-
-            // Reducir velocidad del video de Quartz System
-            const quartzVideo = document.getElementById('quartzVideo');
-            if (quartzVideo) {
-                quartzVideo.playbackRate = 0.6;
-            }
+            // Aplicar velocidades cada vez que los videos se reproducen (para el loop del carrusel)
+            const allVideos = document.querySelectorAll('.solid-color-video, #metallicEpoxyVideo, #epoxyFlakeVideo, #quartzVideo');
+            allVideos.forEach(video => {
+                video.addEventListener('play', function() {
+                    if (this.id === 'epoxyFlakeVideo') {
+                        this.playbackRate = 0.5;
+                    } else {
+                        this.playbackRate = 0.6;
+                    }
+                });
+                video.addEventListener('loadedmetadata', function() {
+                    if (this.id === 'epoxyFlakeVideo') {
+                        this.playbackRate = 0.5;
+                    } else {
+                        this.playbackRate = 0.6;
+                    }
+                });
+            });
 
             // Cerrar menú mobile automáticamente al hacer clic en un enlace
             const mobileMenuLinks = document.querySelectorAll('.mobile-menu a, #mobile-menu a');
